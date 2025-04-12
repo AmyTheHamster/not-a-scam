@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>警告: 危险区</title>
+    <style>
+        /* 页面整体样式 */
+        body {
+            background-color: #222;
+            color: #f00;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff0000;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            animation: flash 1s infinite alternate;
+        }
+
+        /* 闪烁动画 */
+        @keyframes flash {
+            0% { color: #ff0000; }
+            100% { color: #ff9900; }
+        }
+
+        /* 表单样式 */
+        form {
+            background-color: #333;
+            border: 2px solid red;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ff0000;
+            background-color: #222;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #ff0000;
+            color: white;
+            font-size: 1.5em;
+            border: 3px solid #ff3333;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+
+        button:hover {
+            background-color: #ff6666;
+        }
+
+        /* "危险"按钮样式 */
+        .danger-btn {
+            background-color: #ff3300;
+            font-size: 1.8em;
+            border: 2px solid #ff3300;
+        }
+
+        .danger-btn:hover {
+            background-color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+        }
+    </style>
+</head>
+<body>
+    <h1>警告！危险区域！</h1>
+    <p>请提供以下信息以防止系统崩溃：</p>
+    
+    <form id="prank-form">
+        <label for="budget">您的月度预算（妈妈允许的消费金额）：</label><br>
+        <input type="number" id="budget" name="budget" required><br><br>
+
+        <label for="code">请输入神秘代码：</label><br>
+        <input type="text" id="code" name="code" required><br><br>
+
+        <button class="danger-btn" type="submit">提交 - 紧急！</button>
+    </form>
+
+    <script>
+        // 添加一个“警告”弹窗
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();  // 阻止表单实际提交
+
+            // 多个弹窗提示
+            setTimeout(function() {
+                alert("⚠️ 警告：系统正在遭遇攻击！ ⚠️");
+            }, 1000);
+
+            setTimeout(function() {
+                alert("💥 警告：未知代码已被触发！ 💥");
+            }, 3000);
+
+            setTimeout(function() {
+                alert("🚨 系统崩溃警告：数据可能丢失！ 🚨");
+            }, 5000);
+
+            setTimeout(function() {
+                window.location.href = "https://www.example.com"; // 重定向到一个无害的网址
+            }, 7000);
+        });
+    </script>
+</body>
+</html>
